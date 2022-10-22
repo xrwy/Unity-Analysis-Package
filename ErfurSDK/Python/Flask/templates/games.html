@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/games.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css')}}" />
+</head>
+<body>
+    <div class="global-wrapper">
+        <div class='add-game-box-wrapper'>
+            <div class="add-game-box-and-games">
+                <div class="head">
+                    <h1>Games</h1>
+                </div>
+                <div class="body-list-items">
+                    <ul>
+                        {% for game in games %}
+                            <li>
+                                <div>
+                                    <span>{{game[0]}}</span> - 
+                                    <span>{{game[1]}}</span> - 
+                                    <span>{{game[2]}}</span>
+                                </div>
+                                <div class="link-box">
+                                    <a href="http://127.0.0.1:5000/{{game[1]}}">
+                                        {{game[2]}}
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="footer-add-game-box">
+                    <button type="button" onclick="modalToggle('modal')">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <div class="modal-close-box">
+                    <button type="button" onclick="modalToggle('modal')" class="cls-btn">x</button>
+                </div>
+                <div class="modal-title">
+                    <h1>Enter a Game Name</h1>
+                </div>
+                <form class="w-100" action="/game_id/post" method="POST">
+                    <div class='input-group'>
+                        <input 
+                        type='text' 
+                        name='game-name' 
+                        id='game-name' 
+                        class='input'  
+                        maxlength="100"
+                        autoComplete='off'
+                        required 
+                        />
+                        <label htmlFor='game-name' class='input-label'>Game Name</label>
+                    </div>
+                    <div class='submit-btn-box'>
+                        <button type='submit'>
+                        Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const modalToggle = (modal) => {
+            const modalId = document.getElementById(modal);
+            if(modalId.classList.contains('show')){
+                modalId.classList.remove('show');
+            }else  {
+                modalId.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>

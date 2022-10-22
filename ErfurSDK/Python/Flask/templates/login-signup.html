@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}" />
+</head>
+<body>
+    <div class='form-wrapper'>
+        <div class='form-box'>
+            <form method='POST' action='/login' class='form-field' id="login">
+                <h1>Login</h1>
+                <div class='input-group'>
+                  <input 
+                  type='text' 
+                  name='username' 
+                  id='username' 
+                  class='input' 
+                  required 
+                  autoComplete='off' 
+                  />
+                  <label for='username' class='input-label'>Username</label>
+                </div>
+                <br />
+                <div class='input-group'>
+                  <input 
+                  type='password' 
+                  name='password' 
+                  id='password' 
+                  class='input' 
+                  required 
+                  maxlength="15"
+                  autoComplete='off' 
+                  />
+                  <label for='password' class='input-label'>Password</label>
+                </div>
+                <div class='submit-btn-box'>
+                  <button type='submit'>
+                    Login
+                  </button>
+                </div>
+                <div class='toggle'>
+                  <button type='button' onclick="modalToggle('form-field','sign_up')">
+                    Go to Sign Up
+                  </button>
+                </div>
+              </form>
+              
+              <form method='POST' action='/signup' class='form-field none' id="sign_up">
+                <h1>Sign Up</h1>
+                <div class='input-group'>
+                  <input 
+                  type='text' 
+                  name='username' 
+                  id='username' 
+                  class='input' 
+                  required 
+                  autoComplete='off' 
+                  />
+                  <label for='username' class='input-label'>Username</label>
+                </div>
+                <br />
+                <div class='input-group'>
+                  <input 
+                  type='password' 
+                  name='password' 
+                  id='password' 
+                  class='input' 
+                  required
+                  maxlength="15"
+                  autoComplete='off' 
+                  />
+                  <label for='password' class='input-label'>Password</label>
+                </div>
+                <div class='submit-btn-box'>
+                  <button type='submit'>
+                    Register
+                  </button>
+                </div>
+                <div class='toggle'>
+                  <button type='button' onclick="modalToggle('form-field','login')">
+                    Go to Login
+                  </button>
+                </div>
+            </form>
+        </div>
+      </div>
+
+      <script>
+        const modalToggle = (form_field,showField) => {
+            const formField = document.getElementsByClassName(form_field);
+            
+            for(let i = 0; i < formField.length; i++){
+                formField[i].style.display = "none";
+            }
+            
+            const show = document.getElementById(showField);
+            show.style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>

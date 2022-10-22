@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Game Results</title>
+</head>
+<body>
+    <div class="container d-flex align-items-center">
+        <h1>Game Results</h1>
+        <hr style="border: 1px solid #ddd;"/>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    {% for column_name in columnNamesArray[0] %}
+                        <th>{{column_name[0]}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for valueArray in valuesArray %}
+                    <tr>
+                        {% for value in valueArray %}
+                            <td>{{value}}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
